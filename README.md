@@ -1,6 +1,6 @@
 # Tarea: Robot
 ## Profesor: José Ramón Jiménez Reyes
-## Alumno:
+## Alumno: Lenny Daniel Armijos Cevallos
 
 La tarea va a consistir en modelar el movimiento de un robot por una zona de nuestra habitación.
 
