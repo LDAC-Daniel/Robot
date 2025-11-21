@@ -12,10 +12,9 @@ public enum Orientacion {
 
     private String cadenaMostrar;
 
-    private Orientacion (String cadenaMostrar){
+    private Orientacion (String cadenaMostrar) {
         this.cadenaMostrar = cadenaMostrar;
     }
-
     @Override
     public String toString() {
         return cadenaMostrar;
