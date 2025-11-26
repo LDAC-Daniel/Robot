@@ -7,13 +7,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class ZonaTest {
 
     @Test
-    void constructorPorDefectoCreaZonaConAndhoYAltoMinimos() {
+    void constructorPorDefectoCreaZonaConAnchoYAltoMinimos() {
         Zona zona = new Zona();
         assertEquals(10, zona.ancho());
         assertEquals(10, zona.alto());
@@ -21,7 +19,7 @@ class ZonaTest {
 
     @ParameterizedTest(name = "Cuando llamamos al constructor con valores {0}, {1} crea la zona correctamente")
     @CsvSource({"10, 10", "30, 20", "20, 30", "10, 100", "100, 10", "100, 100"})
-    void constructorConParmetrosValidosCreaZona(int ancho, int alto) {
+    void constructorConParametrosValidosCreaZona(int ancho, int alto) {
         Zona zona = new Zona(ancho, alto);
         assertEquals(ancho, zona.ancho());
         assertEquals(alto, zona.alto());
@@ -57,11 +55,8 @@ class ZonaTest {
         assertTrue(zona.pertenece(coordenada));
     }
 
-    private Coordenada getCoordenada(int x, int y) {
-        Coordenada coordenada = mock(Coordenada.class);
-        when(coordenada.x()).thenReturn(x);
-        when(coordenada.y()).thenReturn(y);
-        return coordenada;
+    private Coordenada getCoordenada(int x, int y){
+        return new Coordenada(x,y);
     }
 
     @ParameterizedTest(name = "Cuando llamamos al método pertenece con coordenadas NO pertenecientes a la zona: [5, 5], como: [{0}, {1}], devuelve false")
