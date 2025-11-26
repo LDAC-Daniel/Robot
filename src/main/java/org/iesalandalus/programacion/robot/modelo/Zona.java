@@ -1,10 +1,10 @@
 package org.iesalandalus.programacion.robot.modelo;
 
 public record Zona(int ancho, int alto) {
-    public static int ANCHO_MINIMO = 10;
-    public static int ANCHO_MAXIMO = 100;
-    public static int ALTO_MINIMO = 10;
-    public static int ALTO_MAXIMO = 100;
+    public static final int ANCHO_MINIMO = 10;
+    public static final int ANCHO_MAXIMO = 100;
+    public static final int ALTO_MINIMO = 10;
+    public static final int ALTO_MAXIMO = 100;
 
     public Zona {
         validarAncho(ancho);
@@ -21,25 +21,25 @@ public record Zona(int ancho, int alto) {
 
     private void validarAncho(int ancho) {
         if (ancho < ANCHO_MINIMO || ANCHO_MAXIMO < ancho) {
-            throw new IllegalArgumentException("Error: El ancho debe comprenderse entre " + ANCHO_MINIMO + " y " + ANCHO_MAXIMO);
+            throw new IllegalArgumentException("Ancho no válido.");
         }
     }
 
     private void validarAlto(int alto) {
-        if (alto < ALTO_MINIMO || ALTO_MINIMO < alto) {
-            throw new IllegalArgumentException("Error: El alto debe comprenderse entre " + ALTO_MINIMO + " y " + ALTO_MAXIMO);
+        if (alto < ALTO_MINIMO || ALTO_MAXIMO < alto) {
+            throw new IllegalArgumentException("Alto no válido.");
         }
     }
 
     public boolean pertenece(Coordenada coordenada) {
         if (coordenada == null) {
-            throw new NullPointerException("La coordenada no puede ser nula");
+            throw new NullPointerException("La coordenada no puede ser nula.");
         }
         return perteneceX(coordenada.x()) && perteneceY(coordenada.y());
     }
 
     private boolean perteneceX(int x){
-        return (x >= 0 && x < alto);
+        return (x >= 0 && x < ancho);
     }
 
     private boolean perteneceY(int y){
